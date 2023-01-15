@@ -1,0 +1,43 @@
+{
+  "name": "@stanimirovv/git-revision-script-runner",
+  "version": "0.0.1",
+  "description": "Checkout a commit for each day/month/yeah of a repo's history and run a command. Useful for generating time based metadata for a repo.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint --ext .ts .",
+    "format": "prettier --check *.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanimirovv/git-revision-script-runner.git"
+  },
+  "keywords": [
+    "git",
+    "aggregation",
+    "command",
+    "runner"
+  ],
+  "author": "Zlatin Stanimirov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stanimirovv/git-revision-script-runner/issues"
+  },
+  "homepage": "https://github.com/stanimirovv/git-revision-script-runner#readme",
+  "devDependencies": {
+    "@types/jest": "^29.2.5",
+    "eslint": "^8.32.0",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint-config-standard-with-typescript": "^26.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "2.8.2"
+  }
+}
