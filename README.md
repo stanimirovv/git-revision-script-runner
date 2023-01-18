@@ -1,3 +1,3 @@
-Rename to git-history-traverse
+Rename to git-spelunker
 
 Default aggregate by month 
