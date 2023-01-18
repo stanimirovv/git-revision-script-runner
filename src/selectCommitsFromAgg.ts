@@ -1,2 +1,16 @@
-// TODO select commits from aggregation to then checkout and exec.
-// Either consistnetly take the youngest or the oldest commit
+import { AggregatedCommits } from "./types/aggregatedCommits.type";
+import { Commit } from "./types/commit.type";
+
+export default function selectCommitsFromAgg(
+  commits: AggregatedCommits
+): Commit[] {
+  const selectedCommits: Commit[] = [];
+  const sortedAggregations = Object.keys(commits).sort();
+
+  sortedAggregations.forEach((aggregation) => {
+    const firstCommit = commits[aggregation][0];
+    selectedCommits.push(firstCommit);
+  });
+
+  return selectedCommits;
+}

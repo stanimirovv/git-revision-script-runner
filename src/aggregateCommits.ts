@@ -1,9 +1,10 @@
+import { AggregatedCommits } from "./types/aggregatedCommits.type";
 import { Commit } from "./types/commit.type";
 
 export default function aggregateCommits(
   data: Commit[],
-  aggregation: AggregationType
-): { [key: string]: Commit[] } {
+  aggregation: string
+): AggregatedCommits {
   const groupedData: { [key: string]: Commit[] } = {};
 
   data.forEach((item) => {
