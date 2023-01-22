@@ -15,16 +15,14 @@ export default function aggregateCommits(
         key = item.date.getFullYear().toString();
         break;
       case "month":
-        key = `${item.date.getFullYear()}-${item.date.toLocaleString(
-          "default",
-          { month: "long" }
-        )}`;
+        key = `${item.date.getFullYear()}-${(item.date.getUTCMonth() + 1)
+          .toString()
+          .padStart(2, "0")}`;
         break;
       case "day":
-        key = `${item.date.getFullYear()}-${item.date.toLocaleString(
-          "default",
-          { month: "long" }
-        )}-${item.date.getDate()}`;
+        key = `${item.date.getFullYear()}-${(item.date.getUTCMonth() + 1)
+          .toString()
+          .padStart(2, "0")}-${item.date.getDate()}`;
         break;
       default:
         throw new Error(`Invalid aggregation type: ${aggregation}`);
