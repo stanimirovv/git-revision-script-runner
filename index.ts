@@ -21,7 +21,7 @@ function spelunkRepository() {
       commit.hash,
       config.command
     );
-    console.log(`${commit.date.getUTCDate()} ${commit.hash}: ${commandOutput}`);
+    console.log(`${commit.date} ${commit.hash}: ${commandOutput}`);
   });
 
   gitRepository.restoreInitialState();

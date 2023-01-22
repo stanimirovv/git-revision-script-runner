@@ -12,7 +12,6 @@ export class GitRepository {
       // Run a command and capture the output
       const output = execSync(command).toString();
 
-      console.log(output); // TODO handle this output somehow
       return output.trim();
     } catch (err: any) {
       console.error(err.stderr.toString());
