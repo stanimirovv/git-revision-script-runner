@@ -23,16 +23,29 @@ function spelunkRepository() {
   const gitRepository = new GitRepository();
   gitRepository.getInitialState();
 
+  const reports: Report[] = [];
   selectedCommits.forEach((commit) => {
     const commandOutput = gitRepository.checkoutAndExec(
       commit.hash,
       config.command
     );
-    console.log(`[${commit.date} ${commit.hash}]: ${commandOutput}`);
+    console.error(`[${commit.date} ${commit.hash}]: ${commandOutput}`);
+    reports.push({
+      date: commit.date.toDateString(),
+      commit: commit.hash,
+      output: commandOutput,
+    });
   });
 
+  console.log(JSON.stringify(reports));
   gitRepository.restoreInitialState();
   process.chdir(dirBefore);
 }
 
 spelunkRepository();
+
+type Report = {
+  date: string;
+  commit: string;
+  output: string;
+};
