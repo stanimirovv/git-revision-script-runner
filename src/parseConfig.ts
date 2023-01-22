@@ -6,6 +6,13 @@ export default function parseConfig(): Config {
   const maxCommitsStr = process.env.MAX_COMMITS || "200000";
   const maxCommits = parseInt(maxCommitsStr);
 
+  const acceptableAggregationTypes = ["day", "month", "year"];
+  const aggregation: any = process.env.AGGREGATION || "month";
+  if (!acceptableAggregationTypes.includes(aggregation)) {
+    console.error(`Invalid aggregation type: ${aggregation}`);
+    process.exit(1);
+  }
+
   if (!command) {
     console.error("No command provided");
     process.exit(1);
@@ -15,6 +22,7 @@ export default function parseConfig(): Config {
     repo,
     command,
     maxCommits,
+    aggregation,
   };
   return config;
 }
