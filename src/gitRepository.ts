@@ -4,7 +4,7 @@ import { execSync } from "child_process";
 export class GitRepository {
   private initialBranch = "";
 
-  public checkoutAndExec(commitHash: string, command: string) {
+  public checkoutAndExec(commitHash: string, command: string): string {
     try {
       // Check out the specific commit
       execSync(`git checkout --quiet ${commitHash}`);
@@ -12,10 +12,11 @@ export class GitRepository {
       // Run a command and capture the output
       const output = execSync(command).toString();
 
-      console.error(`hash: ${commitHash} output: ${output.trim()}`);
       console.log(output); // TODO handle this output somehow
+      return output.trim();
     } catch (err: any) {
       console.error(err.stderr.toString());
+      process.exit(1);
     }
   }
 
@@ -29,15 +30,16 @@ export class GitRepository {
       return this.initialBranch;
     } catch (err: any) {
       console.error(err.stderr.toString());
+      process.exit(1);
     }
   }
 
   public restoreInitialState() {
     try {
-      console.log(`Restoring commit hash: ${this.initialBranch}`);
       execSync(`git checkout ${this.initialBranch}`);
     } catch (err: any) {
       console.error(err.stderr.toString());
+      process.exit(1);
     }
   }
 }
