@@ -2,7 +2,7 @@
 import { execSync } from "child_process";
 
 export class GitRepository {
-  private initialCommitHash = "";
+  private initialBranch = "";
 
   public checkoutAndExec(commitHash: string, command: string) {
     try {
@@ -19,23 +19,23 @@ export class GitRepository {
     }
   }
 
-  public getInitialCommitHash() {
+  public getInitialState() {
     try {
-      if (this.initialCommitHash === "") {
-        this.initialCommitHash = execSync("git rev-parse HEAD")
+      if (this.initialBranch === "") {
+        this.initialBranch = execSync("git rev-parse --abbrev-ref HEAD")
           .toString()
           .trim();
       }
-      return this.initialCommitHash;
+      return this.initialBranch;
     } catch (err: any) {
       console.error(err.stderr.toString());
     }
   }
 
-  public restoreInitialCommit() {
+  public restoreInitialState() {
     try {
-      console.log(`Restoring commit hash: ${this.initialCommitHash}`);
-      execSync(`git checkout ${this.initialCommitHash}`);
+      console.log(`Restoring commit hash: ${this.initialBranch}`);
+      execSync(`git checkout ${this.initialBranch}`);
     } catch (err: any) {
       console.error(err.stderr.toString());
     }
