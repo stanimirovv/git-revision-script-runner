@@ -7,7 +7,7 @@ export default function parseConfig(): Config {
   const maxCommits = parseInt(maxCommitsStr);
 
   const acceptableAggregationTypes = ["day", "month", "year"];
-  const aggregation: any = process.env.AGGREGATION || "month";
+  const aggregation: any = process.env.AGG || "month";
   if (!acceptableAggregationTypes.includes(aggregation)) {
     console.error(`Invalid aggregation type: ${aggregation}`);
     process.exit(1);
