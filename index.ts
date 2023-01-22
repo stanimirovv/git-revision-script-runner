@@ -6,6 +6,7 @@ import { listCommits } from "./src/listCommits";
 import parseConfig from "./src/parseConfig";
 import selectCommitsFromAgg from "./src/selectCommitsFromAgg";
 import { AggregatedCommits } from "./src/types/aggregatedCommits.type";
+import { Report } from "./src/types/report.type";
 
 function spelunkRepository() {
   const config = parseConfig();
@@ -43,9 +44,3 @@ function spelunkRepository() {
 }
 
 spelunkRepository();
-
-type Report = {
-  date: string;
-  commit: string;
-  output: string;
-};
