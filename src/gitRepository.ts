@@ -21,7 +21,7 @@ export class GitRepository {
   public getInitialCommitHash() {
     try {
       if (this.initialCommitHash === "") {
-        this.initialCommitHash = execSync("git rev-list --max-parents=0 HEAD")
+        this.initialCommitHash = execSync("git rev-parse HEAD")
           .toString()
           .trim();
       }
