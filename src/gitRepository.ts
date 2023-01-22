@@ -35,7 +35,7 @@ export class GitRepository {
 
   public restoreInitialState() {
     try {
-      execSync(`git checkout ${this.initialBranch}`);
+      execSync(`git checkout --quiet ${this.initialBranch}`);
     } catch (err: any) {
       console.error(err.stderr.toString());
       process.exit(1);
