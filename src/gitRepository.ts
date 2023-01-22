@@ -7,7 +7,7 @@ export class GitRepository {
   public checkoutAndExec(commitHash: string, command: string) {
     try {
       // Check out the specific commit
-      execSync(`git checkout ${commitHash}`);
+      execSync(`git checkout --quiet ${commitHash}`);
 
       // Run a command and capture the output
       const output = execSync(command).toString();
