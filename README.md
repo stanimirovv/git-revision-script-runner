@@ -1,3 +1,4 @@
-Rename to git-spelunker
 
-Default aggregate by month 
+
+Recipes
+npx ts-node index.ts "git ls-files | wc -l"

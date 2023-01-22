@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Checkout a commit for each day/month/yeah of a repo's history and run a command. Useful for generating time based metadata for a repo.",
   "main": "dist/index.js",
+  "bin": "./dist/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "tsc && jest",
     "build": "tsc",
     "lint": "eslint --ext .ts .",
     "format": "prettier --check *.ts"
