@@ -12,6 +12,7 @@ export class GitRepository {
       // Run a command and capture the output
       const output = execSync(command).toString();
 
+      console.error(`hash: ${commitHash} output: ${output.trim()}`);
       console.log(output); // TODO handle this output somehow
     } catch (err: any) {
       console.error(err.stderr.toString());
