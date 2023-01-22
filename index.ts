@@ -17,7 +17,11 @@ function spelunkRepository() {
   gitRepository.getInitialState();
 
   selectedCommits.forEach((commit) => {
-    gitRepository.checkoutAndExec(commit.hash, config.command);
+    const commandOutput = gitRepository.checkoutAndExec(
+      commit.hash,
+      config.command
+    );
+    console.log(`${commit.date.getUTCDate()} ${commit.hash}: ${commandOutput}`);
   });
 
   gitRepository.restoreInitialState();
