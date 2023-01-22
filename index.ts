@@ -15,7 +15,8 @@ const selectedCommits = selectCommitsFromAgg(aggregatedCommits); // TODO oldest 
 
 function spelunkRepository(commits: Commit[]) {
   const gitRepository = new GitRepository();
-  gitRepository.getInitialCommitHash();
+  const initialCommitHash = gitRepository.getInitialCommitHash();
+  console.log(`Initial commit hash: ${initialCommitHash}`);
 
   commits.forEach((commit) => {
     gitRepository.checkoutAndExec(commit.hash, config.command);

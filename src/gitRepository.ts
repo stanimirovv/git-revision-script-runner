@@ -33,6 +33,7 @@ export class GitRepository {
 
   public restoreInitialCommit() {
     try {
+      console.log(`Restoring commit hash: ${this.initialCommitHash}`);
       execSync(`git checkout ${this.initialCommitHash}`);
     } catch (err: any) {
       console.error(err.stderr.toString());
