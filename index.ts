@@ -10,8 +10,15 @@ import { AggregatedCommits } from "./src/types/aggregatedCommits.type";
 function spelunkRepository() {
   const config = parseConfig();
   const commits = listCommits(config.repo, config.maxCommits);
-  const aggregatedCommits: AggregatedCommits = aggregateCommits(commits, "day"); // TODO aggregation type
+  const aggregatedCommits: AggregatedCommits = aggregateCommits(
+    commits,
+    "month"
+  ); // TODO aggregation type
   const selectedCommits = selectCommitsFromAgg(aggregatedCommits); // TODO oldest or newest
+
+  // Switch to the repo directory
+  const dirBefore = process.cwd();
+  process.chdir(config.repo);
 
   const gitRepository = new GitRepository();
   gitRepository.getInitialState();
@@ -25,6 +32,7 @@ function spelunkRepository() {
   });
 
   gitRepository.restoreInitialState();
+  process.chdir(dirBefore);
 }
 
 spelunkRepository();
