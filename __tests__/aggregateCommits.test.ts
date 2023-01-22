@@ -16,28 +16,28 @@ describe("groupBy", () => {
   it("aggregates correctly for date", () => {
     const result = aggregateCommits(data, "day");
     expect(result).toEqual({
-      "2022-January-1": [
+      "2022-01-1": [
         { hash: "one", date: new Date("2022-01-01") },
         { hash: "two", date: new Date("2022-01-01") },
       ],
-      "2022-February-1": [{ hash: "three", date: new Date("2022-02-01") }],
-      "2022-February-2": [{ hash: "four", date: new Date("2022-02-02") }],
-      "2023-March-1": [{ hash: "five", date: new Date("2023-03-01") }],
+      "2022-02-1": [{ hash: "three", date: new Date("2022-02-01") }],
+      "2022-02-2": [{ hash: "four", date: new Date("2022-02-02") }],
+      "2023-03-1": [{ hash: "five", date: new Date("2023-03-01") }],
     });
   });
 
   it("aggregates correctly for month", () => {
     const result = aggregateCommits(data, "month");
     expect(result).toEqual({
-      "2022-January": [
+      "2022-01": [
         { hash: "one", date: new Date("2022-01-01") },
         { hash: "two", date: new Date("2022-01-01") },
       ],
-      "2022-February": [
+      "2022-02": [
         { hash: "three", date: new Date("2022-02-01") },
         { hash: "four", date: new Date("2022-02-02") },
       ],
-      "2023-March": [{ hash: "five", date: new Date("2023-03-01") }],
+      "2023-03": [{ hash: "five", date: new Date("2023-03-01") }],
     });
   });
 
