@@ -3,7 +3,7 @@ import { Config } from "./types/config.type";
 export default function parseConfig(): Config {
   const command = process.argv[2];
   const repo = process.env.COMMAND || "./";
-  const maxCommitsStr = process.env.MAX_COMMITS || "10";
+  const maxCommitsStr = process.env.MAX_COMMITS || "200000";
   const maxCommits = parseInt(maxCommitsStr);
 
   if (!command) {
