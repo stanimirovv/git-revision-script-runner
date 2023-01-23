@@ -31,9 +31,11 @@ describe("groupBy", () => {
     const output = execSync(
       'AGG=month MAX_COMMITS=1 node ./dist/index.js "git ls-files | wc -l"'
     );
-    console.log("11111", output.toString());
     const outputObject = JSON.parse(output.toString());
     expect(outputObject).toBeDefined();
-    expect(parseInt(outputObject[0].output) > 15).toBeTruthy();
+    expect(outputObject.commit).toEqual(
+      "ed023839058c42ff265e886f66d4ad369436903d"
+    );
+    expect(parseInt(outputObject[0].output)).toEqual(22);
   });
 });
