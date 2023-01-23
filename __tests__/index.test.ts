@@ -5,7 +5,6 @@ describe("groupBy", () => {
     const output = execSync(
       'AGG=day node ./dist/index.js "git ls-files | wc -l"'
     );
-    console.log(output.toString());
     const outputObject = JSON.parse(output.toString());
     expect(outputObject).toBeDefined();
     expect(parseInt(outputObject[0].output)).toEqual(8);
@@ -19,11 +18,20 @@ describe("groupBy", () => {
     expect(outputObject).toBeDefined();
   });
 
-  it("should support month aggregation", async () => {
+  it("should support month aggregation and repo", async () => {
     const output = execSync(
-      'AGG=month node ./dist/index.js "git ls-files | wc -l"'
+      'AGG=month REPO=./ node ./dist/index.js "git ls-files | wc -l"'
     );
-    console.log(output.toString());
+    const outputObject = JSON.parse(output.toString());
+    expect(outputObject).toBeDefined();
+    expect(parseInt(outputObject[0].output) > 15).toBeTruthy();
+  });
+
+  it("should support month aggregation and max commits", async () => {
+    const output = execSync(
+      'AGG=month MAX_COMMITS=1 node ./dist/index.js "git ls-files | wc -l"'
+    );
+    console.log("11111", output.toString());
     const outputObject = JSON.parse(output.toString());
     expect(outputObject).toBeDefined();
     expect(parseInt(outputObject[0].output) > 15).toBeTruthy();
