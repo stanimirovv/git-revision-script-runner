@@ -1,5 +1,6 @@
 TODO: tests
 TODO: export different environment variables that can be used by the other script
+TODO: if there are multiple ARGV parameters use all of them as a command
 
 
 ## Usage
