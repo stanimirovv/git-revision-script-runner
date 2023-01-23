@@ -5,12 +5,12 @@ export default function selectCommitsFromAgg(
   commits: AggregatedCommits
 ): Commit[] {
   const selectedCommits: Commit[] = [];
-  const sortedAggregations = Object.keys(commits).sort();
+  const sortedAggregations = Object.keys(commits);
 
   sortedAggregations.forEach((aggregation) => {
     const firstCommit = commits[aggregation][0];
     selectedCommits.push(firstCommit);
   });
 
-  return selectedCommits;
+  return selectedCommits.sort((a, b) => a.date.getTime() - b.date.getTime());
 }
