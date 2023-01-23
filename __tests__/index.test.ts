@@ -21,7 +21,7 @@ describe("groupBy", () => {
 
   it("should support month aggregation", async () => {
     const output = execSync(
-      'AGG=day node ./dist/index.js "git ls-files | wc -l"'
+      'AGG=month node ./dist/index.js "git ls-files | wc -l"'
     );
     console.log(output.toString());
     const outputObject = JSON.parse(output.toString());
