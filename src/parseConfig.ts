@@ -2,6 +2,7 @@ import { Config } from "./types/config.type";
 
 export default function parseConfig(): Config {
   const command = getCommand();
+  console.log("COMMAND: ", command);
   const repo = process.env.REPO || "./";
   const maxCommitsStr = process.env.MAX_COMMITS || "200000";
   const maxCommits = parseInt(maxCommitsStr);
