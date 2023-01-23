@@ -33,7 +33,7 @@ describe("groupBy", () => {
     );
     const outputObject = JSON.parse(output.toString());
     expect(outputObject).toBeDefined();
-    expect(outputObject.commit).toEqual(
+    expect(outputObject[0].commit).toEqual(
       "ed023839058c42ff265e886f66d4ad369436903d"
     );
     expect(parseInt(outputObject[0].output)).toEqual(22);
