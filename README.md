@@ -1,12 +1,10 @@
 TODO: export different environment variables that can be used by the other script
-TODO: if there are multiple ARGV parameters use all of them as a command
 
 
 ## Usage
 ```bash
 npx ts-node index.ts "<command>"
 ```
-!IMPORTANT: note the double quotes in the command. Only the first ARGV parameter is read.
 
 ## Parameters
 All parameters need to be passed as environment variables either exported in the shell or passed to the script.

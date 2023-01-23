@@ -1,7 +1,7 @@
 import { Config } from "./types/config.type";
 
 export default function parseConfig(): Config {
-  const command = process.argv[2];
+  const command = getCommand();
   const repo = process.env.REPO || "./";
   const maxCommitsStr = process.env.MAX_COMMITS || "200000";
   const maxCommits = parseInt(maxCommitsStr);
@@ -25,4 +25,14 @@ export default function parseConfig(): Config {
     aggregation,
   };
   return config;
+}
+
+function getCommand() {
+  if (process.argv.length == 3) {
+    return process.argv[2];
+  } else if (process.argv.length > 3) {
+    return process.argv.slice(2).join(" ");
+  } else {
+    return "";
+  }
 }
