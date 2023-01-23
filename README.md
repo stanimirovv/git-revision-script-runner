@@ -1,9 +1,19 @@
 TODO: tests
+TODO: export different environment variables that can be used by the other script
 
-# Usage
-AGG
-MAX_COMMITS
-REPO
+
+## Usage
+```bash
+npx ts-node index.ts "<command>"
+```
+!IMPORTANT: note the double quotes in the command. Only the first ARGV parameter is read.
+
+## Parameters
+All parameters need to be passed as environment variables either exported in the shell or passed to the script.
+
+AGG - Aggregation to make for the commits. Accepted values: day/month/year
+MAX_COMMITS - Maximum number of commits to fetch. Default: 20000
+REPO - Path to the git repository. Default: current directory
 
 
 ## Recipes
@@ -13,6 +23,6 @@ If these tools are missing from your system you need to install them.
 Count files in repo
 ```bash
 npx ts-node index.ts "git ls-files | wc -l"
-jq '.dependencies | length' package.json
-jq '.dependencies + .devDependencies | length' package.json
+npx ts-node index.ts "jq '.dependencies | length' package.json"
+npx ts-node index.ts "jq '.dependencies + .devDependencies | length' package.json"
 ```
