@@ -20,7 +20,7 @@ describe("groupBy", () => {
 
   it("should support day aggregation and chunked commands", async () => {
     const output = execSync(
-      "AGG=day node ./dist/index.js git ls-files | wc -l"
+      'AGG=day node ./dist/index.js "git ls-files |" wc -l'
     );
     const outputObject = JSON.parse(output.toString());
     expect(outputObject).toBeDefined();
