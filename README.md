@@ -3,9 +3,11 @@
 Visit different commits in a git repository and run a command on each of them.
 Useful for gathering statistics about your codebase over time.
 
+
 ## Usage
 ```bash
-npx ts-node index.ts "<command>"
+npm i --save-dev git-spelunker
+npx git-spelunker "<command>"
 ```
 Note: You probably want to wrap the command in quotes. If you don't all params will be concatenated, but the shell might expand them, pipes won't work, etc.
 
